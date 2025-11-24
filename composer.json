@@ -1,0 +1,13 @@
+{
+    "name": "bold/hyva-child",
+    "description": "Child theme for Hyvä",
+    "type": "magento2-theme",
+    "require": {
+        "hyva-themes/magento2-default-theme": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

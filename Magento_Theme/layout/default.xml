@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <css src="css/output.css"/>
+    </head>
+
+    <body>
+<!-- Sticky Header -->
+      <referenceContainer name="head.additional">
+          <block name="js.sticky.header" template="Magento_Theme::page/js/sticky-header.phtml">
+              <arguments>
+                  <argument name="hide_on_scroll_down" xsi:type="boolean">true</argument>
+                  <argument name="scroll_offset" xsi:type="number">100</argument>
+                  <argument name="enable_css_only_sticky_style" xsi:type="boolean">false</argument>
+              </arguments>
+          </block>
+      </referenceContainer>
+
+      <referenceContainer name="before.body.end">
+          <block name="js.scroll.helpers" template="Magento_Theme::page/js/scroll-helpers.phtml"/>
+      </referenceContainer>
+
+      <!-- Inject Hyvä UI Menu.B into Hyvä header -->
+        <referenceBlock name="topmenu_desktop">
+            <arguments>
+                <argument name="open_top_level_menu_on_hover" xsi:type="boolean">true</argument> <!-- Also open on hover (true/false)-->
+                <argument name="show_top_level_all_link" xsi:type="boolean">false</argument> <!-- Show view all link for top level (true/false) -->
+                <argument name="top_menu_cta_item" xsi:type="string" translate="true">Sale</argument> <!-- Top Menu Item to Highlight -->
+            </arguments>
+        </referenceBlock>
+
+      <!-- Header notification -->
+      <referenceBlock name="after.body.start">
+          <block name="header-notification"
+                 template="Magento_Theme::html/header/notification.phtml"
+                 after="global_notices"/>
+      </referenceBlock>
+
+      <!-- Header content -->
+      <referenceBlock name="header-content">
+          <arguments>
+              <argument name="show_compare" xsi:type="boolean">true</argument>
+              <argument name="show_wishlist" xsi:type="boolean">true</argument>
+              <argument name="show_language" xsi:type="boolean">true</argument>
+          </arguments>
+
+          <block name="header.compare"
+                 as="compare"
+                 template="Magento_Theme::html/header/compare.phtml"/>
+
+          <block name="topmenu_mobile_wrapper"
+                 as="mobilemenu"
+                 template="Magento_Theme::html/header/mobilemenu.phtml"
+                 ttl="3600"/>
+      </referenceBlock>
+
+      <!-- Move mobile menu -->
+      <move element="top.menu.mobile" destination="topmenu_mobile_wrapper"/>
+
+      <!-- USP section -->
+      <referenceBlock name="top.container">
+          <block name="header-usps"
+                 template="Magento_Theme::html/header/usps.phtml"
+                 before="-"/>
+      </referenceBlock>
+
+      <!-- Remove newsletter -->
+      <referenceBlock name="form.subscribe" remove="true"/>
+
+      <!-- Footer content -->
+      <referenceBlock name="footer-content">
+          <container name="footer-content-before"/>
+
+          <block name="footer_column_1" 
+				 template="Magento_Theme::html/footer/collapse.phtml">
+              <arguments>
+                  <argument name="title" xsi:type="string" translate="true">Shop</argument>
+                  <argument name="open" xsi:type="boolean">true</argument>
+              </arguments>
+          </block>
+
+          <block name="footer_column_2"
+                 template="Magento_Theme::html/footer/collapse.phtml"
+                 after="footer_column_1">
+              <arguments>
+                  <argument name="title" xsi:type="string" translate="true">Customer Service</argument>
+              </arguments>
+              <block name="footer-static-links-services"
+                     template="Magento_Theme::html/footer/kolona-2.phtml"/>
+          </block>
+
+          <block name="footer_column_3"
+                 template="Magento_Theme::html/footer/collapse.phtml"
+                 after="footer_column_2">
+              <arguments>
+                  <argument name="title" xsi:type="string" translate="true">Our Company</argument>
+              </arguments>
+              <block name="footer-static-links-company"
+                     template="Magento_Theme::html/footer/kolona-3.phtml"/>
+          </block>
+
+          <block name="footer_column_4"
+                 template="Magento_Theme::html/footer/collapse.phtml"
+                 after="footer_column_3">
+              <arguments>
+                  <argument name="title" xsi:type="string" translate="true">My Account</argument>
+              </arguments>
+              <block name="footer_menu_4"
+                     template="Magento_Theme::html/footer/menu-account.phtml"/>
+          </block>
+
+          <container name="footer-content-after">
+              <block name="footer-payment"
+                     template="Magento_Theme::html/footer/payment.phtml"/>
+          </container>
+      </referenceBlock>
+
+    </body>
+</page>
