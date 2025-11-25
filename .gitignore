@@ -1,19 +1,39 @@
-# Tailwind source
+# Node / Build sistemi – NIKADA ne idu na GitHub
+node_modules/
+tailwind/
+hyva-ui-2.6.1/
+vendor/
+.dist/
+build/
+.cache/
+.pnp/
+
+# Tailwind / PostCSS fajlovi koje koristimo samo lokalno
 package.json
 package-lock.json
-tailwind.config.js
+pnpm-lock.yaml
+yarn.lock
 postcss.config.js
+tailwind.config.js
+tailwind-source.css
 
-# Node modules
-node_modules/
+# Magento static build folder (uvek se generiše)
+pub/static/
 
-# Tailwind source folder (ako postoji)
-src/
-
-# Temp files
-*.map
-*.log
-
-# OS crap
+# OS fajlovi
 .DS_Store
 Thumbs.db
+
+# Logovi
+*.log
+
+# PhpStorm / VSCode
+.idea/
+.vscode/
+
+# Backup
+*.bak
+*.tmp
+
+# Sve što ne sme da se šalje na server
+*.map
