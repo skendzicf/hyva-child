@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Hyvä UI imports */
 @import "../../../hyva-ui-2.6.1/assets/css/base.css";
 @import "../../../hyva-ui-2.6.1/assets/css/components.css";
 @import "../../../hyva-ui-2.6.1/assets/css/utilities.css";
+@import "css/forms-range.css";
 
 /* Custom overrides (optional) */
 body {

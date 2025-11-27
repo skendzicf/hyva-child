@@ -19,8 +19,33 @@
       </referenceContainer>
 
       <referenceContainer name="before.body.end">
+          <block name="scroll.to.top" template="Magento_Theme::scroll-to-top.phtml">
+              <arguments>
+                  <argument name="position" xsi:type="string">end</argument>
+                  <!-- Button position: start / center / end -->
+
+                  <argument name="visible_offset" xsi:type="number">200</argument>
+                  <!-- Offset before showing the button -->
+
+                  <argument name="visible_only_to_top" xsi:type="boolean">true</argument>
+                  <!-- Show only when scrolling up -->
+
+                  <argument name="hide_on_inactivity" xsi:type="number">4000</argument>
+                  <!-- Auto-hide after X ms -->
+              </arguments>
+          </block>
+      </referenceContainer>
+
+
+      <referenceContainer name="before.body.end">
           <block name="js.scroll.helpers" template="Magento_Theme::page/js/scroll-helpers.phtml"/>
       </referenceContainer>
+
+      <!-- ubacivanje dela za product data -->
+
+<referenceBlock name="script-alpine-js">
+    <block name="alpine-plugin-collapse" template="Magento_Theme::page/js/plugins/collapse.phtml"/>
+</referenceBlock>
 
       <!-- Inject Hyvä UI Menu.B into Hyvä header -->
         <referenceBlock name="topmenu_desktop">
