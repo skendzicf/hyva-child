@@ -2,25 +2,60 @@
 <!--
 /**
  * Hyvä Themes - https://hyva.io
- * Copyright © Hyvä Themes 2020-present. All rights reserved.
- * This product is licensed per Magento install
- * See https://hyva.io/license
+ * Combined layout for:
+ * - product-data.B (accorditabs)
+ * - sticky-atc.A (sticky Add To Cart)
  */
 -->
-<page
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
     <body>
+
+        <!-- ============================================= -->
+        <!-- 1) PRODUCT DATA – ACCORDITABS / TABS          -->
+        <!-- ============================================= -->
         <referenceBlock name="product.info.details">
             <arguments>
-                <argument name="divider" xsi:type="boolean">false</argument> <!-- Show divider between items (true/false) -->
+                <argument name="accorditabs" xsi:type="array">
+                    <item name="divider" xsi:type="boolean">true</item>
+                    <item name="nav" xsi:type="string">tabs</item>
+                </argument>
             </arguments>
         </referenceBlock>
+
+        <!-- Optional custom name for Description tab -->
         <referenceBlock name="description">
             <arguments>
                 <argument name="title" xsi:type="string" translate="true">Description</argument>
             </arguments>
         </referenceBlock>
+
+
+        <!-- ============================================= -->
+        <!-- 2) STICKY ADD TO CART BAR                     -->
+        <!-- ============================================= -->
+        <referenceContainer name="main.content">
+            <block
+                class="Magento\Catalog\Block\Product\View"
+                name="product.info.addtocart.sticky"
+                template="Magento_Catalog::product/view/addtocart-sticky.phtml"
+                after="columns"
+            >
+                <arguments>
+                    <argument name="mobile_only" xsi:type="boolean">false</argument>
+                    <argument name="truncate_title" xsi:type="boolean">true</argument>
+                    <argument name="only_show_after_add_to_cart" xsi:type="boolean">true</argument>
+                </arguments>
+
+                <block
+                    class="Magento\Catalog\Block\Product\Price"
+                    name="product.info.price.sticky"
+                    template="Magento_Catalog::product/view/price.phtml"
+                    as="price"
+                />
+            </block>
+        </referenceContainer>
+
     </body>
 </page>

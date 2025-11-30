@@ -44,8 +44,14 @@
       <!-- ubacivanje dela za product data -->
 
 <referenceBlock name="script-alpine-js">
-    <block name="alpine-plugin-collapse" template="Magento_Theme::page/js/plugins/collapse.phtml"/>
+    <block name="alpine-plugin-collapse"
+           template="Magento_Theme::page/js/plugins/collapse.phtml"/>
+
+    <block name="alpine-plugin-snap-slider" 
+           template="Magento_Theme::page/js/plugins/snap-slider.phtml"/>
 </referenceBlock>
+
+
 
       <!-- Inject Hyvä UI Menu.B into Hyvä header -->
         <referenceBlock name="topmenu_desktop">
@@ -141,6 +147,33 @@
                      template="Magento_Theme::html/footer/payment.phtml"/>
           </container>
       </referenceBlock>
+
+<!-- MINI CART - Hyvä UI B-Popover -->
+<referenceBlock name="cart-drawer">
+    <arguments>
+        <argument name="show_sku" xsi:type="boolean">true</argument>
+        <argument name="qty_style" xsi:type="string">incrementor</argument> <!-- ili text/input/select -->
+    </arguments>
+</referenceBlock>
+
+<block name="cart-drawer.qtybox" 
+       template="Magento_Theme::html/cart/qtybox.phtml"/>
+
+
+<!-- BREADCRUMBS -->
+ <referenceBlock name="breadcrumbs">
+            <arguments>
+                <!-- Back button na mobilnim uređajima -->
+                <argument name="show_back_btn" xsi:type="boolean">true</argument>
+
+                <!-- Overflow scroll (normal = standard, sticky = zalepi breadcrumbs pri vrhu dok se skroluje) -->
+                <argument name="overflow_style" xsi:type="string">normal</argument>
+
+                <!-- Ako želiš da isključiš schema.org JSON-LD -->
+                <!-- <argument name="skip_ld_json_schema" xsi:type="boolean">true</argument> -->
+            </arguments>
+        </referenceBlock>
+
 
     </body>
 </page>

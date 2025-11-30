@@ -69,7 +69,7 @@ $searchConfig = $viewModels->require(SearchConfig::class);
                 const search = this.$refs.searchInput;
                 term = term && typeof term == 'string' ? term : search.value;
                 if (term.length < this.minSearchLength) {
-                    search.setCustomValidity('<?= $escaper->escapeJs(__('Minimum Search query length is %1', $helper->getMinQueryLength())) ?>');
+                    search.setCustomValidity('<?= $escaper->escapeJs(__('Minimum za pretragu je %1', $helper->getMinQueryLength())) ?>');
                     search.reportValidity();
                 } else {
                     search.setCustomValidity('');
@@ -108,7 +108,7 @@ $searchConfig = $viewModels->require(SearchConfig::class);
 </script>
 <?php $hyvaCsp->registerInlineScript() ?>
 <div class="container relative px-0" x-data="initMiniSearch">
-    <search title="<?= $escaper->escapeHtmlAttr(__('Store')) ?>" role="search">
+    <search title="<?= $escaper->escapeHtmlAttr(__('Prodavnica')) ?>" role="search">
         <form
             id="search_mini_form"
             class="form minisearch flex"
@@ -118,7 +118,7 @@ $searchConfig = $viewModels->require(SearchConfig::class);
             x-ref="form"
         >
             <label class="sr-only" for="search">
-                <?= $escaper->escapeHtml(__('Search')) ?>
+                <?= $escaper->escapeHtml(__('Pretraži')) ?>
             </label>
             <input
                 id="search"
@@ -127,7 +127,7 @@ $searchConfig = $viewModels->require(SearchConfig::class);
                 autocomplete="off"
                 name="<?= $escaper->escapeHtmlAttr($helper->getQueryParamName()) ?>"
                 value="<?= /** @noEscape */ $helper->getEscapedQueryText() ?>"
-                placeholder="<?= $escaper->escapeHtmlAttr(__('Search entire store here...')) ?>"
+                placeholder="<?= $escaper->escapeHtmlAttr(__('Pretraži ceo armyshop')) ?>"
                 maxlength="<?= $escaper->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
                 class="w-full border-slate-300 rounded-l-md"
                 @search-open.window.debounce.10="focusAfterOpen"
@@ -140,8 +140,8 @@ $searchConfig = $viewModels->require(SearchConfig::class);
             <button
                 type="submit"
                 class="action search btn btn-primary rounded-l-none rounded-r-md px-3"
-                title="<?= $escaper->escapeHtmlAttr(__('Search')) ?>"
-                aria-label="<?= $escaper->escapeHtmlAttr(__('Search')) ?>"
+                title="<?= $escaper->escapeHtmlAttr(__('Pretraži')) ?>"
+                aria-label="<?= $escaper->escapeHtmlAttr(__('Pretraži')) ?>"
             >
                 <?= $heroicons->searchHtml('', 24, 24, ['aria-hidden' => 'true']); ?>
             </button>
@@ -150,7 +150,7 @@ $searchConfig = $viewModels->require(SearchConfig::class);
     <?php if ($searchConfig->isSuggestionsAllowed()): ?>
     <template x-if="suggestions.length">
         <nav
-            aria-label="<?= $escaper->escapeHtmlAttr(__('Search Suggestions')) ?>"
+            aria-label="<?= $escaper->escapeHtmlAttr(__('Sugestije')) ?>"
             class="z-10 absolute top-full inset-x-0 leading-normal p-2 rounded-md bg-container-lighter text-slate-800 flex flex-col mt-2"
         >
             <template x-for="suggestion in suggestions">
