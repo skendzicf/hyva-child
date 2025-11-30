@@ -8,6 +8,7 @@
 @import "../../../hyva-ui-2.6.1/assets/css/components.css";
 @import "../../../hyva-ui-2.6.1/assets/css/utilities.css";
 @import "css/forms-range.css";
+@import "tailwind/utilities/mask-overflow.css";
 
 /* Custom overrides (optional) */
 body {
